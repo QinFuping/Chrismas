@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mine</title>
+	<meta name="viewport" content="width=device-width">
+	<style>
+		.wrap{
+			width: 400px;
+			margin: auto;
+			position: relative;
+			border: 1px solid rgba(1,1,1,0);
+		}
+		#mine{
+			display: block;
+			width: 400px;
+			height: 30px;
+			outline: none;
+			border: none;
+			font-family: 楷体;
+			font-size: 30px;
+			text-align: center;
+			color: #ccc;
+			animation: change 10s linear infinite;
+			margin-top: 30px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#msg{
+			display: inline-block;
+			margin: auto;
+			margin-top: 100px;
+			height: 300px;
+			font-family: 微软雅黑;
+			letter-spacing: 2px;
+		}
+		@-webkit-keyframes change{
+			0%{color:#ccc;}
+			10%{color:yellow;}
+			20%{color:maroon;}
+			30%{color:purple;}
+			40%{color:orange;}
+			50%{color:blue;}
+			60%{color:cyan;}
+			70%{color:green;}
+			80%{color:coral;}
+			90%{color:red;}
+			100%{color:#ccc;}
+		} 
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<input type="text" id="mine">
+		<div id="msg"></div>
+	</div>
+	<script>
+		var mine=document.getElementById('mine');
+		var msg=document.getElementById('msg');
+		if(mine.value==''){
+			mine.value='暗号';
+		}
+		mine.onfocus=function(){
+			if(mine.value=='暗号'){
+				mine.value='';
+			}
+		}
+		mine.onblur=function(){
+			if(mine.value==''){
+				mine.value='暗号';
+			}
+			if(mine.value=='welcome'){
+				fnYes();
+			}else{
+				fnNo();
+			}
+		}
+		mine.onkeydown=function () {
+			if(event.keyCode==13){
+				if(mine.value=='welcome'){
+					fnYes();
+				}else{
+					fnNo();
+				}
+			}
+		}
+		function fnYes(){
+			msg.innerHTML='Github：'+'QinFuping'+'<br>'+'password：'+'qfp198745'+'<hr>';
+			msg.innerHTML+='taobao:'+'qinfuping001'+'<br>'+'password：'+'@bluesky1987'+'<hr>';
+			msg.innerHTML+='JD:'+'QinFuping2016'+'<br>'+'password：'+'qfp198745'+'<hr>';
+			msg.innerHTML+='sina:'+'qinfuping1987'+'<br>'+'password：'+'@bluesky1987'+'<hr>';
+			msg.innerHTML+='lmgvip:'+'qinfp@lmgvip.cn'+'<br>'+'password：'+'Qinfp888'+'<hr>';
+			msg.innerHTML+='background:'+'custom86'+'<br>'+'password：'+'123456'+'<hr>';
+			msg.style.marginLeft=(400-msg.offsetWidth)/2+'px';
+		}
+		function fnNo(){
+			msg.innerHTML='我想要的<br>想做的<br>你比谁都了<br>你想说的<br>想给的<br>我全都知道<br>未接来电没留言<br>一定是你孤单的想念<br>任何人都猜不到<br>这是我们的暗号<br>......';
+			msg.style.marginLeft=(400-msg.offsetWidth)/2+'px';
+		}
+	</script>
+</body>
+</html>
